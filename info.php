@@ -966,6 +966,7 @@ if ($user->isLoggedIn()) {
                                             <th width="10%">Returned Date</th>
                                             <th width="10%">Returned Staff</th>
                                             <th width="10%">Received Staff</th>
+                                            <th width="10%">Return</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1011,7 +1012,10 @@ if ($user->isLoggedIn()) {
                                                 <td><?= $files['return_on'] ?></td>
                                                 <td><?= $return['firstname'] . ' ' . $return['lastname'] ?></td>
                                                 <td><?= $receive['firstname'] . ' ' . $receive['lastname'] ?></td>
-
+                                                <td>
+                                                    <a href="add.php?id=6&fid=<?= $files['id'] ?>" class="btn btn-warning">Return</a>
+                                                    </a>
+                                                </td>
                                             </tr>
                                             <div class="modal fade" id="user<?= $files['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
