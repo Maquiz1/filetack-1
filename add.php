@@ -423,6 +423,33 @@ if ($user->isLoggedIn()) {
             } else {
                 $pageError = $validate->errors();
             }
+        }elseif (Input::get('return_file1')) {
+            $validate = $validate->check($_POST, array(
+                // 'name' => array(
+                //     'required' => true,
+                // ),
+                'staff' => array(
+                    'required' => true,
+                ),
+            ));
+            if ($validate->passed()) {
+                try {
+                    $f_req = $override->getNews('file_request', 'id', Input::get('file_request_id'),'status', 2)[0];
+                    $user->updateRecord('file_request', array(
+                        'return_on' => date('Y-m-d H:i:s'),
+                        'return_staff' => Input::get('staff'),
+                        'received_staff' => $user->data()->id,
+                        'approve_staff' => $user->data()->id,
+                        'status' => 1,
+                    ), Input::get('file_request_id'));
+                    $user->updateRecord('study_files', array('status' => 0), $f_req['file_id']);
+                    $successMessage = 'Study Files Successful Returned';
+                } catch (Exception $e) {
+                    die($e->getMessage());
+                }
+            } else {
+                $pageError = $validate->errors();
+            }
         }
     }
 } else {
@@ -1050,6 +1077,35 @@ if ($user->isLoggedIn()) {
 
                                     <div class="footer tar">
                                         <input type="submit" name="add_sensitization_file" value="Submit" class="btn btn-default">
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    <?php } elseif ($_GET['id'] == 13) { ?>
+                        <div class="col-md-offset-1 col-md-8">
+                            <div class="head clearfix">
+                                <div class="isw-ok"></div>
+                                <h1>Return </h1>
+                            </div>
+                            <div class="block-fluid">
+                                <form id="validation" method="post">                                    
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">Staff</div>
+                                        <div class="col-md-9">
+                                            <select name="staff" style="width: 100%;" required>
+                                                <option value="">Select staff</option>
+                                                <?php foreach ($override->getData('user') as $staff) { ?>
+                                                    <option value="<?= $staff['id'] ?>"><?= $staff['firstname'] . ' ' . $staff['lastname'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="footer tar">
+                                        <input type="hidden" name="file_request_id" value="<?= $_GET['fid'] ?>" class="btn btn-default">
+                                        <input type="submit" name="return_file1" value="Submit" class="btn btn-default">
                                     </div>
 
                                 </form>
