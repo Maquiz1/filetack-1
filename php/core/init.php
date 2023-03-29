@@ -6,7 +6,7 @@ $GLOBALS['config'] = array(
       'host' => '127.0.0.1',
       'username' => 'root',
       'password' => 'Data@2020',
-      'db' => 'filetrack'
+      'db' => 'files'
   	),
   'remember' =>array(
       'cookie_name' => 'hash',
