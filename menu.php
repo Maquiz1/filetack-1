@@ -48,6 +48,7 @@ if ($user->data()->accessLevel == 1) {
                     </li>
                 </ul>
             </li>
+
             <li class="openable">
                 <a href="#"><span class="isw-users"></span><span class="text">Clients</span></a>
                 <ul>
@@ -63,39 +64,41 @@ if ($user->data()->accessLevel == 1) {
                     </li>
                 </ul>
             </li>
+        <?php } ?>
 
-            <li class="openable">
-                <a href="#"><span class="isw-lock"></span><span class="text">Studies</span></a>
-                <ul>
-                    <li class="">
-                        <a href="add.php?id=3">
-                            <span class="glyphicon glyphicon-plus"></span><span class="text">Add Study</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="info.php?id=4">
-                            <span class="glyphicon glyphicon-list"></span><span class="text">Manage Studies</span>
-                        </a>
-                    </li>
 
-                </ul>
-            </li>
+        <li class="openable">
+            <a href="#"><span class="isw-lock"></span><span class="text">Studies</span></a>
+            <ul>
+                <li class="">
+                    <a href="add.php?id=3">
+                        <span class="glyphicon glyphicon-plus"></span><span class="text">Add Study</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="info.php?id=4">
+                        <span class="glyphicon glyphicon-list"></span><span class="text">Manage Studies</span>
+                    </a>
+                </li>
 
-            <li class="openable">
-                <a href="#"><span class="isw-bookmark"></span><span class="text">Request and Return</span></a>
-                <ul>
-                    <li>
-                        <a href="add.php?id=4">
-                            <span class="glyphicon glyphicon-plus"></span><span class="text">Add Type</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="add.php?id=8">
-                            <span class="glyphicon glyphicon-plus"></span><span class="text">Request</span>
-                        </a>
-                    </li>
+            </ul>
+        </li>
 
-                    <!-- <li>
+        <li class="openable">
+            <a href="#"><span class="isw-bookmark"></span><span class="text">Request and Return</span></a>
+            <ul>
+                <li>
+                    <a href="add.php?id=4">
+                        <span class="glyphicon glyphicon-plus"></span><span class="text">Add Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="add.php?id=8">
+                        <span class="glyphicon glyphicon-plus"></span><span class="text">Request</span>
+                    </a>
+                </li>
+
+                <!-- <li>
                         <a href="add.php?id=12">
                             <span class="glyphicon glyphicon-plus"></span><span class="text">Add Sensitization File</span>
                         </a>
@@ -107,23 +110,26 @@ if ($user->data()->accessLevel == 1) {
                         </a>
                     </li> -->
 
-                    <li>
-                        <a href="add.php?id=6">
-                            <span class="glyphicon glyphicon-user"></span><span class="text">Return</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="info.php?id=3">
-                            <span class="glyphicon glyphicon-registration-mark"></span><span class="text">Manage</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="info.php?id=7">
-                            <span class="glyphicon glyphicon-registration-mark"></span><span class="text">Logs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                <li>
+                    <a href="add.php?id=6">
+                        <span class="glyphicon glyphicon-user"></span><span class="text">Return</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="info.php?id=3">
+                        <span class="glyphicon glyphicon-registration-mark"></span><span class="text">Manage</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="info.php?id=7">
+                        <span class="glyphicon glyphicon-registration-mark"></span><span class="text">Logs</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <?php if ($user->data()->accessLevel == 1) { ?>
+
 
             <li class="openable">
                 <a href="#"><span class="isw-tag"></span><span class="text">Extra</span></a>
@@ -160,8 +166,6 @@ if ($user->data()->accessLevel == 1) {
                     </li>
                 </ul>
             </li>
-        <?php } else { ?>
-
         <?php } ?>
     </ul>
 

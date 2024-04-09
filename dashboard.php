@@ -12,6 +12,7 @@ $noE = 0;
 $noC = 0;
 $noD = 0;
 $users = $override->getData('user');
+
 if ($user->isLoggedIn()) {
     if (Input::exists('post')) {
         if (Input::get('edit_file_status')) {
@@ -32,7 +33,9 @@ if ($user->isLoggedIn()) {
 } else {
     Redirect::to('index.php');
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
